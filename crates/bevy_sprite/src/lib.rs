@@ -21,6 +21,7 @@ mod sprite;
 mod texture_atlas;
 mod texture_atlas_builder;
 mod texture_slice;
+mod tilemap_chunk;
 
 /// The sprite prelude.
 ///
