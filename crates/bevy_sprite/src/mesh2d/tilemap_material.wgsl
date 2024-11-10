@@ -11,8 +11,10 @@ struct TilemapMaterial {
 
 };
 
-@group(2) @binding(1) var texture: texture_2d<f32>;
-@group(2) @binding(2) var texture_sampler: sampler;
+@group(2) @binding(0) var indicies: texture_2d<u32>;
+@group(2) @binding(1) var indicies_sampler: sampler;
+@group(2) @binding(2) var texture: texture_2d<f32>;
+@group(2) @binding(3) var texture_sampler: sampler;
 
 @fragment
 fn fragment(
@@ -28,16 +30,4 @@ fn fragment(
 //     output_color = tonemapping::tone_mapping(output_color, view.color_grading);
 // #endif
     return output_color;
-}
-
-fn alpha_discard(material: ColorMaterial, output_color: vec4<f32>) -> vec4<f32> {
-    var color = output_color;
-    let alpha_mode = material.flags & COLOR_MATERIAL_FLAGS_ALPHA_MODE_RESERVED_BITS;
-    if alpha_mode == COLOR_MATERIAL_FLAGS_ALPHA_MODE_OPAQUE {
-        // NOTE: If rendering as opaque, alpha should be ignored so set to 1.0
-        color.a = 1.0;
-    }
-
-
-    return color;
 }
