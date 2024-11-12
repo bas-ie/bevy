@@ -38,19 +38,23 @@ impl Plugin for TilemapMaterialPlugin {
 // write_buffer for web gpu
 // 
 // wgpu::util::StagingBelt for everything else
+// OFC WEBGL SUPPORTS JACK SHIT
 
 #[derive(Asset, AsBindGroup, Reflect, Debug, Clone)]
 #[reflect(Default, Debug)]
 pub struct TilemapMaterial {
-    #[texture(2)]
-    #[sampler(3)]
+    #[texture(0)]
+    pub indicies: Option<Handle<Image>>,
+    #[texture(1)]
+    #[sampler(2)]
     pub texture: Option<Handle<Image>>,
+    // pub 
 }
-
 
 impl Default for TilemapMaterial {
     fn default() -> Self {
         TilemapMaterial {
+            indicies: None,
             texture: None
         }
     }

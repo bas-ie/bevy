@@ -4,6 +4,7 @@ use bevy_asset::Handle;
 use bevy_math::IVec2;
 use bevy_reflect::Reflect;
 use bevy_reflect::std_traits::ReflectDefault;
+use bevy_render::texture::Image;
 
 use crate::TextureAtlasLayout;
 
@@ -11,11 +12,8 @@ use crate::TextureAtlasLayout;
 #[reflect(Default, Debug)]
 
 pub struct TilemapChunk {
-    /// Texture
     pub layout: Handle<TextureAtlasLayout>,
-
-    pub chunk_size: IVec2,
-    // pub tile_ids: array<usize>,
+    pub tile_indicies: Image,
 }
 
 // impl TilemapChunk {
